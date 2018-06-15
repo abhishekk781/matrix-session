@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 int main(){
-	double n;
-	cin>>n;
+	double n = 10;
+	// cin>>n;
 	// float i = 0.00;
 	// while(i*i<n){
 	// 	cout<<i<<" ";
