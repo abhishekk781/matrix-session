@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-int board[10][10] = {0};
+int board[20][20] = {0};
+int count1 = 0;
 
 bool can_place(int currow,int curcol,int row){
 	for (int i = 0; i < row; ++i)
@@ -25,7 +26,19 @@ bool can_place(int currow,int curcol,int row){
 
 bool kya_sahi_rakha_hai(int row,int currow){
 	if(currow>=row)
-		return true;
+	{
+		for (int i = 0; i < 10; ++i)
+		{
+			for (int j = 0; j < 10; ++j)
+			{
+				cout<<board[i][j]<<" ";
+			}
+			cout<<endl;
+		}
+		cout<<endl<<endl<<endl;
+		count1++;
+		return false;
+	}
 	for (int i = 0; i < row; ++i)
 	{
 		if(can_place(currow,i,row)){
@@ -42,15 +55,8 @@ bool kya_sahi_rakha_hai(int row,int currow){
 
 int main(){
 
-kya_sahi_rakha_hai(8,0);
+kya_sahi_rakha_hai(10,0);
 
-for (int i = 0; i < 8; ++i)
-{
-	for (int j = 0; j < 8; ++j)
-	{
-		cout<<board[i][j]<<" ";
-	}
-	cout<<endl;
-}
+cout<<count1<<endl;
 
 }
