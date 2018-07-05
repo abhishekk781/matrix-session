@@ -50,6 +50,7 @@ node* reverse_list(node *root)
 			temp->next=pnt1;
 			pnt1=temp;
 		}
+		root=root->next;
 	}
 	return pnt1;
 }
