@@ -15,49 +15,12 @@ int main(){
 	int ar[n];
 	for(int i=0;i<n;i++){
 		cin>>ar[i];
+		st.push(ar[i]);
 	}
-	for(int i=0;i<n;i++){
-		if(st.empty()){ 
-			st.push(ar[i]); 
-			continue; 
-		}
-		if(ar[i]<0){ st.push(ar[i]);}
-		else{
-			int tp=st.top();
-			if(tp<0){ st.push(ar[i]); }
-			else{
-				st.pop();
-				int opt=st.top();
-				st.pop();
-				switch(opt){
-					case -1 : st.push(ar[i]*tp);
-								break;
-					case -2 : st.push(ar[i]+tp);
-								break;
-					case -3 : st.push(ar[i]-tp);
-								break;
-					case -4 : st.push(ar[i]/tp);
-								break;
-
-				}
-			}
-		}
+	while(!st.empty())
+	{
+		cout<<st.top()<<" ";
+		st.pop();
 	}
-	int a=st.top();
-	st.pop();
-	int b=st.top();
-	st.pop();
-	int opt=st.top;
-	switch(opt){
-					case -1 : st.push(ar[i]*tp);
-								break;
-					case -2 : st.push(ar[i]+tp);
-								break;
-					case -3 : st.push(ar[i]-tp);
-								break;
-					case -4 : st.push(ar[i]/tp);
-								break;
-
-	}
-	cout<<st.top()<<endl;
+	return 0;
 }
