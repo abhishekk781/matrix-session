@@ -1,0 +1,17 @@
+SinglyLinkedListNode* reverse(SinglyLinkedListNode* head) {
+    vector <int> ar;
+    while(head!=NULL){
+        ar.push_back(head->data);
+        head=head->next;
+    }
+    SinglyLinkedListNode *head1=NULL,*tail1=NULL;
+    for(int i=ar.size()-1;i>=0;i--){
+        SinglyLinkedListNode *temp=new SinglyLinkedListNode(ar[i]);
+        if(head1==NULL){ head1=temp; tail1=temp; }
+        else{
+            tail1->next=temp;
+            tail1=temp;
+        }
+    }
+    return head1;
+}

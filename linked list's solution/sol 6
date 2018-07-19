@@ -1,0 +1,19 @@
+int getNode(SinglyLinkedListNode* head, int positionFromTail) {
+    SinglyLinkedListNode *temp=head;
+    int sz=0;                       // size of linkedlist
+    while(temp!=NULL){
+        sz++;
+        temp=temp->next;
+    }
+    int positionFromHead=sz-(positionFromTail);
+    int k=1;
+    temp=head;
+    while(temp!=NULL){
+        if(positionFromHead==k){ return temp->data; }
+        else{
+            k++;
+            temp=temp->next;
+        }
+    }
+    return 0;
+}

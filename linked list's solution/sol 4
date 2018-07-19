@@ -1,0 +1,42 @@
+SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+    SinglyLinkedListNode *head=NULL,*tail=NULL;
+    while(head1!=NULL && head2!=NULL){
+        if(head1->data < head2->data){
+            SinglyLinkedListNode *temp=new SinglyLinkedListNode(head1->data);
+            if(head==NULL){ head=temp; tail=temp; }
+            else{
+                tail->next=temp;
+                tail=temp;
+            }
+            head1=head1->next;
+        }
+        else{
+            SinglyLinkedListNode *temp=new SinglyLinkedListNode(head2->data);
+            if(head==NULL){ head=temp; tail=temp; }
+            else{
+                tail->next=temp;
+                tail=temp;
+            }
+            head2=head2->next;
+        }
+    }
+    while(head1!=NULL){
+        SinglyLinkedListNode *temp=new SinglyLinkedListNode(head1->data);
+        if(head==NULL){ head=temp; tail=temp; }
+        else{
+            tail->next=temp;
+            tail=temp;
+        }
+        head1=head1->next;
+    }
+    while(head2!=NULL){
+        SinglyLinkedListNode *temp=new SinglyLinkedListNode(head2->data);
+        if(head==NULL){ head=temp; tail=temp; }
+        else{
+            tail->next=temp;
+            tail=temp;
+        }
+        head2=head2->next;
+    }
+    return head;
+}

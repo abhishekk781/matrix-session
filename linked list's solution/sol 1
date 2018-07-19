@@ -1,0 +1,21 @@
+Node* Insert(Node *head,int data)
+{
+    struct Node *temp,*tail,*ptr; 
+    temp=new Node;
+    temp->data=data;
+    temp->next=NULL;
+    if(head==NULL) { head=temp;}
+    else
+        {
+        ptr=head;
+        while(ptr!=NULL)
+            {
+            tail=ptr;
+            ptr=ptr->next;
+            }
+        tail->next=temp;
+        }
+    return head;
+  
+}
+
