@@ -1,0 +1,10 @@
+
+------------------------------------- class 1----------------------------------
+
+prime number O(sqrt(n))
+gcd O(log(n))
+power O(log(n)) -- iterative approach homework
+prime sieve 
+
+
+
