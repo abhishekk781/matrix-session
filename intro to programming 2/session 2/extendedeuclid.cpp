@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+// https://www.hackerearth.com/practice/math/number-theory/basic-number-theory-1/tutorial/
+
 long long x,y,gcd;
 void extendedeuclid(long long a,long long b){
 
