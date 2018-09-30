@@ -1,9 +1,7 @@
 ------------Topic to be covered----------------
 prime sieve  --> question find the number of element to be reduced so that the gcd of array is greater than 1
 modular arithmatic
-segmented sieve
+segmented sieve --------
 extended euclid algorithm
-fermat little theorm
+fermat little theorm - https://hack.codingblocks.com/practice-section/p/66/92
 Home work :- https://www.hackerearth.com/practice/math/number-theory/basic-number-theory-1/tutorial/
-CRT
-willson
