@@ -34,7 +34,7 @@ long long power(long long a,long long b,long long m){
 		return 1;
 	}
 
-	long long x = power(a,b/2);
+	long long x = power(a,b/2,m);
 	if(b%2==0){
 		return (x*x)%m;
 	} 
