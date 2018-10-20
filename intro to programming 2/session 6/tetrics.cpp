@@ -67,9 +67,11 @@ public:
 		{
 			update_in(0,n-1,1,i,x);
 		}*/
-		
-		
+
+
 	}
+
+
 
 
 	void print_tree(){

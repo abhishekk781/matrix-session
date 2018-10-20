@@ -63,10 +63,25 @@ public:
 	}
 
 	void range_update(int l,int r,int x){
-		for (int i = l; i <= r; ++i)
+/*		for (int i = l; i <= r; ++i)
 		{
 			update_in(0,4,1,i,x);
+		}*/
+		update_range_in(0,n-1,l,r,x,1);
+	}
+	void update_range_in(int l,int r,int ql,int qr,int val,int pos){
+		//no overlap
+		if(ql>r || qr<l){
+			return;
 		}
+		if(l==r && ql<=l && qr>=l){
+			v[pos] += val;
+			return;
+		}
+		int mid = (l+r)/2;
+		update_range_in(l,mid,ql,qr,val,2*pos);
+		update_range_in(mid+1,r,ql,qr,val,2*pos+1);
+		v[pos] = v[2*pos]+v[2*pos+1];
 	}
 
 
@@ -100,6 +115,6 @@ int main(){
 	// 	cout<<s.range_query(a,b)<<endl;
 	// }
 	cout<<endl;
-	s.update(3,5);
+	s.range_update(3,5,10);
 	s.print_tree();
 }
