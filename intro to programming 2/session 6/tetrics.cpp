@@ -19,7 +19,7 @@ public:
 		int mid = (l+r)/2;
 		buildtree(arr,l,mid,2*idx);
 		buildtree(arr,mid+1,r,2*idx+1);
-		v[idx] = v[2*idx]+v[2*idx+1];
+		v[idx] = max(v[2*idx],v[2*idx+1]);
 	}
 
 	int range_query(int ql, int qr){
@@ -34,12 +34,12 @@ public:
 
 		//no overlap
 		if(qr<l || ql>r){
-			return 0;
+			return INT_MIN;
 		}
 
 		//partial overlap
 		int mid = (l+r)/2;
-		return range_in(l,mid,ql,qr,idx*2) + range_in(mid+1,r,ql,qr,idx*2+1);
+		return max(range_in(l,mid,ql,qr,idx*2) , range_in(mid+1,r,ql,qr,idx*2+1));
 	}
 
 
@@ -52,26 +52,28 @@ public:
 			return;
 		}
 		if(start == end && start == kaha_update){
-			v[pos] += kya_update;
+			v[pos] = kya_update;
 			return;
 		}
 
 		int mid = (start+end)/2;
 		update_in(start,mid,2*pos,kaha_update,kya_update);
 		update_in(mid+1,end,2*pos+1,kaha_update, kya_update);
-		v[pos] = v[2*pos]+v[2*pos+1];
+		v[pos] = max(v[2*pos],v[2*pos+1]);
 	}
 
 	void range_update(int l,int r,int x){
-		for (int i = l; i <= r; ++i)
+/*		for (int i = l; i <= r; ++i)
 		{
-			update_in(0,4,1,i,x);
-		}
+			update_in(0,n-1,1,i,x);
+		}*/
+		
+		
 	}
 
 
 	void print_tree(){
-		for (int i = 0; i < 4*n; ++i)
+		for (int i = 0; i < 100; ++i)
 		{
 			cout<<v[i]<<" ";
 		}
@@ -81,25 +83,33 @@ public:
 
 
 
-int main(){
-	int n;
+int main()
+{	int n;
 	cin>>n;
-	vector<int> v(n);
-	for (int i = 0; i < n; ++i)
-	 {
-	 	cin>>v[i];
-	 } 
+	vector<int> v(50);
 	segmenttree s(v);
-	s.print_tree();
-	// int q;
-	// cin>>q;
-	// while(q--)
-	// {
-	// 	int a,b;
-	// 	cin>>a>>b;
-	// 	cout<<s.range_query(a,b)<<endl;
-	// }
-	cout<<endl;
-	s.update(3,5);
-	s.print_tree();
+	// s.range_update(0,3,5);
+	// s.update(10,5);
+	// s.update(2,7);
+	// s.update(3,2);
+	// s.print_tree();
+	while(n--){
+		int l,h,p,c,x;
+		cin>>l>>h>>p>>c>>x;
+		if(c==1){
+			int m = s.range_query(x,x+l-1);
+			s.range_update(x,x+l-1,m+1);
+			s.update(x+p-1,m+1+h);
+		}
+		if(c==0){
+			int m = s.range_query(x,x+l-1);
+			int vh = s.range_query(x+p-1,x+p-1);
+			// cout<<m<<" "<<vh<<endl;
+			int inc = max(m,vh+h);
+			s.range_update(x,x+l-1,inc+1);
+		}
+		// s.print_tree();
+		// cout<<endl;
+	}
+	cout<<s.range_query(0,50);
 }
